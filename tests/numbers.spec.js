@@ -18,8 +18,24 @@ describe('2 - Implemente os casos de teste para a função `numbers`', () => {
   it('Verifica se a função `numbers` retorna `true` quando o array contém apenas números e falso caso contrário', () => {
     // fail('Teste vazio!');
     expect(numbers([1, 2, 3, 4, 5])).toBeTruthy();
+    // expect(numbers([1, 2, '3', 4, 5])).toBeFalsy();
+    // expect(numbers([1, 'a', 3])).toBeFalsy();
+    // expect(numbers([' '])).toBeFalsy();
+  });
+
+  it('Teste 01 - Se a array aceita apenas NÚMEROS', () => {
+    expect(numbers([1, 2, 3, 4, 5])).toBeTruthy();
+  });
+
+  it('Teste 02 - Se a array não aceita um "número" em forma de string', () => {
     expect(numbers([1, 2, '3', 4, 5])).toBeFalsy();
+  });
+
+  it('Teste 03 - Se a array não aceita uma "string" e não um número', () => {
     expect(numbers([1, 'a', 3])).toBeFalsy();
+  });
+
+  it('Teste 04 - Se a array não aceita uma array vazia', () => {
     expect(numbers([' '])).toBeFalsy();
   });
 });
