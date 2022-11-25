@@ -58,4 +58,9 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
     expect(typeof (productDetails('Alcool gel', 'Máscara')[1]) === 'object').toBe(true);
   });
 
+  it('05 - Se passando 2 parâmetros diferentes, esses 2 objetos também são diferentes', () => {
+    const products = productDetails('firstProduct', 'secondProduct');
+    expect(products[0]).not.toEqual(products[1]);
+  });
+
 });
