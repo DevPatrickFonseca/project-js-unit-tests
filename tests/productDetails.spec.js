@@ -49,4 +49,8 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
     expect(Array.isArray(productDetails('Alcool gel', 'Máscara'))).toBe(true);
   });
 
+  it('03 - Se o array retornado pela função productDetails contém 2 itens.', () => { // OK
+    expect(productDetails('Alcool gel', 'Máscara').length).toBe(2);
+  });
+
 });
