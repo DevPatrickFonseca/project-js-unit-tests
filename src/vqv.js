@@ -19,11 +19,8 @@
 */
 
 const vqv = (name, age) => {
-  const value1 = name; //! sem NECESSIDADE POIS JA PUXA EM BAIXO
-  const value2 = age;
-
 // Verifica se valores são indefinidos
-  if (value1 === undefined && value2 === undefined) return undefined; 
+  if (name === undefined && age === undefined) return undefined; 
 
   // Imprime em Template Literals
   return `Oi, meu nome é ${name}!
