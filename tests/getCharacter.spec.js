@@ -66,16 +66,20 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   });
 
   it('03 - Se função retorna o objeto correto para o parâmetro "Brienne"', () => { // OK
-    expect(getCharacter('brienne')).toEqual({
+    expect(getCharacter('Brienne')).toEqual({
       name: 'Brienne Tarth',
       class: 'Knight',
       phrases: ['Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.'],
     })  
   });
 
-  // it('04 - Se função retorna o objeto correto para o parâmetro "Melissandre"', () => {
-    
-  // });
+  it('04 - Se função retorna o objeto correto para o parâmetro "Melissandre"', () => { // OK
+    expect(getCharacter('Melissandre')).toEqual({
+      name: 'Melissandre',
+      class: 'Necromancer',
+      phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+    })
+  });
   
   // it('05 - Teste se o parâmetro não é Case Sensitive, retorna o mesmo objeto relativo a ele', () => {
     
