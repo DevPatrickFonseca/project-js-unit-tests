@@ -81,9 +81,13 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
     })
   });
   
-  // it('05 - Teste se o parâmetro não é Case Sensitive, retorna o mesmo objeto relativo a ele', () => {
-    
-  // });
+  it('05 - Teste se o parâmetro não é Case Sensitive, retorna o mesmo objeto relativo a ele', () => { // OK
+    expect(getCharacter('MELISSandre')).toEqual({
+      name: 'Melissandre',
+      class: 'Necromancer',
+      phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+    })
+  });
 
   // it('06 - Se ao passar um nome que não está na tabela, a função retorna undefined', () => {
     
