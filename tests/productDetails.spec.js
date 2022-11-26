@@ -58,9 +58,18 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
     expect(typeof (productDetails('Alcool gel', 'Máscara')[1]) === 'object').toBe(true);
   });
 
-  it('05 - Se passando 2 parâmetros diferentes, esses 2 objetos também são diferentes', () => {
+  it('05 - Se passando 2 parâmetros diferentes, esses 2 objetos também são diferentes', () => { // OK
     const products = productDetails('firstProduct', 'secondProduct');
     expect(products[0]).not.toEqual(products[1]);
   });
 
+  it('06 - Se os 2 productIds terminam com 123', () => { // OK
+    const productsIds = productDetails('firstProduct', 'secondProduct');
+
+    // Passa pelos valores de cada produto
+    for (let i = 0; i < productsIds.length; i += 1) {
+      // Verifica o productId de cada produto se tem 123
+      expect(productsIds[i].details.productId).toMatch('123');
+    }
+  });
 });
