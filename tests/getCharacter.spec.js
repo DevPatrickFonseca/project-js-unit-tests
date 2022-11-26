@@ -53,13 +53,14 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
     // 5. Teste se o parâmetro não é Case Sensitive, ou seja, independente de conter letras maiúsculas ou minúsculas retorna o mesmo objeto relativo a ele.
     // 6. Teste se ao passar um nome que não está na tabela, a função retorna undefined.
   });
-  it('01 - Se função não recebe nenhum parâmetro, retorna undefined.', () => {
+  it('01 - Se função não recebe nenhum parâmetro, retorna undefined.', () => { // OK
     expect(getCharacter()).toBeUndefined();
   });
   
-  // it('02 - Se função retorna o objeto correto para o parâmetro "Arya"', () => {
-    
-  // });
+  it('02 - Se função retorna o objeto correto para o parâmetro "Arya"', () => { // OK
+    const objectArya = getCharacter('arya');
+    expect(typeof objectArya).toBe('object');
+  });
 
   // it('03 - Se função retorna o objeto correto para o parâmetro "Brienne"', () => {
     
