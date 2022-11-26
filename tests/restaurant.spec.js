@@ -100,9 +100,11 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(myRestaurant.consumption).toEqual([]);
   });
   
-  // it('06 - Se fez a implementação do item 6 do README no arquivo src/restaurant.js', () => {
+  it('06 - Se fez a implementação do item 6 do README no arquivo src/restaurant.js', () => { // OK
+    const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
 
-  // });
+    expect(myRestaurant).toHaveProperty('consumption');
+  });
 
   // it('07 - ', () => {
     
