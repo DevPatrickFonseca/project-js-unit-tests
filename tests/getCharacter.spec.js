@@ -58,12 +58,21 @@ describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   });
   
   it('02 - Se função retorna o objeto correto para o parâmetro "Arya"', () => { // OK
-    const objectArya = getCharacter('arya');
-    expect(typeof objectArya).toBe('object');
+    expect(getCharacter('arya')).toEqual({
+      name: 'Arya Stark',
+      class: 'Rogue',
+      phrases: ['Not today', 'A girl has no name.'],
+    })  
   });
 
-  // it('03 - Se função retorna o objeto correto para o parâmetro "Brienne"', () => {
-    
+  // it('03 - Se função retorna o objeto correto para o parâmetro "Brienne"', () => { // OK
+  //   const objectBrienne = getCharacter('arya');
+  //   expect(typeof objectBrienne).toBe('object');
+    // const estudante2 = createStudent('Nobre');
+    // expect(typeof estudante2).toBe('object');
+    // expect(typeof estudante2.feedback).toBe('function');
+    // expect(estudante2.name).toMatch(/Nobre/);
+    // expect(estudante2.feedback()).toBe(goodPerson);
   // });
 
   // it('04 - Se função retorna o objeto correto para o parâmetro "Melissandre"', () => {
