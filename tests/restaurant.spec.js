@@ -90,16 +90,18 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
 
   it('04 - Se fez a implementação do item 4 do README no arquivo src/restaurant.js', () => {    
     const myRestaurant = createMenu();
-    
+
     expect(typeof myRestaurant.fetchMenu).toBe('function');
   });
   
-  // it('05 - Se "objetoRetornado.consumption", após a criação do menu, retorna um array vazio', () => {
-    
-  // });
+  it('05 - Se "objetoRetornado.consumption", após a criação do menu, retorna um array vazio', () => { // OK
+    const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
+
+    expect(myRestaurant.consumption).toEqual([]);
+  });
   
   // it('06 - Se fez a implementação do item 6 do README no arquivo src/restaurant.js', () => {
-    
+
   // });
 
   // it('07 - ', () => {
