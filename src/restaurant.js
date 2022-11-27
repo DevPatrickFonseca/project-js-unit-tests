@@ -42,12 +42,40 @@
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
 const createMenu = (item) => {
-  const itemMenu = {
+  let itemMenu; // 7.2 - Reatribui itemMenu como let para evitar erro
+
+  const keyOrder = (addOrder) => { 
+    // 7.0 - Consultar no menu o que foi consumido
+
+    const arrayDrink = Object.keys(item.drink); // Checa array drink
+    const arrayFood = Object.keys(item.food); // Checa array food
+
+    const arrayMenu = arrayDrink.concat(arrayFood); 
+    // Junta as food e drink em arrays com concatenação
+    
+    for (let i = 0; i < arrayMenu.length; i += 1) {
+      const itemSelected = arrayMenu[i];
+      // console.log(itemSelected, addOrder);
+      if (itemSelected === addOrder) {
+        itemMenu.consumption.push(addOrder);
+        return;
+      }    
+    }
+    return 'Item indisponível';
+  };
+
+  itemMenu = {
     fetchMenu: () => item,
     consumption: [],
+    order: (addOrder) => keyOrder(addOrder), // 7.1 - Chamei a função keyOrder
   };
+
   return itemMenu;
 };
+
+// const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} });
+
+// myRestaurant.order('coxinha');
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
 

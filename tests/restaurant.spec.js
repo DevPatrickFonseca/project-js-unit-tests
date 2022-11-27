@@ -35,6 +35,9 @@ const createMenu = require('../src/restaurant');
 */
 
 describe('10 - Implemente a função `createMenu`, bem como seus casos de teste', () => {
+
+  const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
+  
   it('Verifica se a função `createMenu` tem o comportamento esperado', () => {
     // fail('Teste vazio!');
     // 1: Verifique se função `createMenu()` retorna um objeto que possui a chave `fetchMenu`, a qual tem como valor uma função.
@@ -69,46 +72,42 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
   });
   it('01 - Se função `createMenu()` retorna um objeto que possui a chave `fetchMenu`, a qual tem como valor uma função', () => { // OK
     // Passo 01 - Se dados são objeto
-    const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
     expect(typeof myRestaurant).toBe('object');
     // Passo 02 - Se a função tem a propriedade fetchMenu
     expect(myRestaurant).toHaveProperty('fetchMenu');
   });
 
   it('02 - Se o menu passado pra função createMenu() é idêntico ao menu recuperado pela função "objetoRetornado.fetchMenu()"', () => { // OK
-    const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
-
     expect(myRestaurant.fetchMenu()).toEqual({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
   });
 
-  it('03 - Se "objetoRetornado.fetchMenu()" retorna um objeto cujas chaves são somente `food` e `drink`', () => {
-    const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
-
+  it('03 - Se "objetoRetornado.fetchMenu()" retorna um objeto cujas chaves são somente `food` e `drink`', () => { // OK
     expect(myRestaurant.fetchMenu()).toHaveProperty('food');
     expect(myRestaurant.fetchMenu()).toHaveProperty('drink');
   });
 
-  it('04 - Se fez a implementação do item 4 do README no arquivo src/restaurant.js', () => {    
+  it('04 - Se fez a implementação do item 4 do README no arquivo src/restaurant.js', () => { // OK 
     const myRestaurant = createMenu();
 
     expect(typeof myRestaurant.fetchMenu).toBe('function');
   });
   
   it('05 - Se "objetoRetornado.consumption", após a criação do menu, retorna um array vazio', () => { // OK
-    const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
-
     expect(myRestaurant.consumption).toEqual([]);
   });
   
   it('06 - Se fez a implementação do item 6 do README no arquivo src/restaurant.js', () => { // OK
-    const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}});
-
     expect(myRestaurant).toHaveProperty('consumption');
   });
 
-  // it('07 - ', () => {
-    
-  // });
+  it('07 - Se ao chamar uma função associada à chave `order` no objeto retornado, passando uma string como parâmetro é retornado', () => {
+    // 01 - Chama função order "keyOrder"
+    myRestaurant.order('coxinha');
+    expect(myRestaurant.consumption).toContain('coxinha');
+    // 02 - O que retorna de Order
+    const itemTest = myRestaurant.order('pinga');
+    expect(itemTest).toBe('Item indisponível');
+  });
 
   // it('08 - Se fez a implementação do item 8 do README no arquivo src/restaurant.js', () => {
     
