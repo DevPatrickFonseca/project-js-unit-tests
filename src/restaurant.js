@@ -41,33 +41,61 @@
 // 4: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato: 
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
+// 12 - Construção da função pay (payment)
+
+// 12: Adicione ao objeto retornado por `createMenu()` uma chave `pay` armazenando uma função que:
+// - percorrerá item a item de `objetoRetornado.consumption`;
+// - fará a soma do preço desses itens;
+// - retornará o valor somado acrescido de 10%.
+// DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+
+const sumValue = (values) => { // 10.12 - Soma todos valores da array 
+  let totalSum = 0;
+
+  for (let i1 = 0; i1 < values.length; i1 += 1) totalSum += values[i1];
+  return totalSum;
+};
+
 const createMenu = (item) => {
   let itemMenu; // 7.2 - Reatribui itemMenu como let para evitar erro
+
+  const valueItems = [];
 
   const keyOrder = (addOrder) => { 
     // 7.0 - Consultar no menu o que foi consumido
 
-    const arrayDrink = Object.keys(item.drink); // Checa array drink
-    const arrayFood = Object.keys(item.food); // Checa array food
+    const arrayDrink = Object.entries(item.drink); // Checa array drink
+    const arrayFood = Object.entries(item.food); // Checa array food
 
     const arrayMenu = arrayDrink.concat(arrayFood); 
     // Junta as food e drink em arrays com concatenação
     
     for (let i = 0; i < arrayMenu.length; i += 1) {
       const itemSelected = arrayMenu[i];
-      // console.log(itemSelected, addOrder);
-      if (itemSelected === addOrder) {
+
+      if (itemSelected[0] === addOrder) {
         itemMenu.consumption.push(addOrder);
+
+        valueItems.push(itemSelected[1]);
+        
         return;
-      }    
+      }
     }
     return 'Item indisponível';
+  };
+
+  // 10.12 - Função
+  const pay = () => {
+    const total = sumValue(valueItems);
+
+    return parseFloat((total * 1.10).toFixed(2)); // parseFloat converte strings em numbers
   };
 
   itemMenu = {
     fetchMenu: () => item,
     consumption: [],
     order: (addOrder) => keyOrder(addOrder), // 7.1 - Chamei a função keyOrder
+    pay, // Puxa a função pay como uma entrada completa
   };
 
   return itemMenu;
@@ -76,6 +104,11 @@ const createMenu = (item) => {
 // const myRestaurant = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} });
 
 // myRestaurant.order('coxinha');
+// myRestaurant.order('cerveja');
+// myRestaurant.order('sopa');
+// myRestaurant.order('cerveja');
+
+// console.log(myRestaurant.pay());
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
 

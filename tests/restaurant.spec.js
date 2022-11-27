@@ -107,7 +107,6 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     // 02 - O que retorna de Order
     const itemTest = myRestaurant.order('pinga');
     expect(itemTest).toBe('Item indisponível');
-
   });
 
   it('08 - Se fez a implementação do item 8 do README no arquivo src/restaurant.js', () => { // OK
@@ -129,11 +128,13 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(myRestaurant.consumption).toEqual(['coxinha', 'sopa', 'agua', 'coxinha']);
   });
 
-  // it('11 - Se ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, acrescido de 10%, conforme registrado em `objetoRetornado.consumption`', () => {
-    
-  // });
+  it('11 - Se ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, acrescido de 10%, conforme registrado em `objetoRetornado.consumption`', () => { // OK
+    const payment = myRestaurant.pay();
 
-  // it('12 - Se fez a implementação do item 12 do README no arquivo src/restaurant.js', () => {
-    
-  // });
+    expect(payment).toBe(23.76);
+  });
+
+  it('12 - Se fez a implementação do item 12 do README no arquivo src/restaurant.js', () => { // OK
+    expect(typeof myRestaurant.pay).toBe('function');
+  }); 
 });
