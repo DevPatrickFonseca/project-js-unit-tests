@@ -100,22 +100,29 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(myRestaurant).toHaveProperty('consumption');
   });
 
-  it('07 - Se ao chamar uma função associada à chave `order` no objeto retornado, passando uma string como parâmetro é retornado', () => {
+  it('07 - Se ao chamar uma função associada à chave `order` no objeto retornado, passando uma string como parâmetro é retornado', () => { // OK
     // 01 - Chama função order "keyOrder"
     myRestaurant.order('coxinha');
     expect(myRestaurant.consumption).toContain('coxinha');
     // 02 - O que retorna de Order
     const itemTest = myRestaurant.order('pinga');
     expect(itemTest).toBe('Item indisponível');
+
   });
 
-  // it('08 - Se fez a implementação do item 8 do README no arquivo src/restaurant.js', () => {
-    
-  // });
+  it('08 - Se fez a implementação do item 8 do README no arquivo src/restaurant.js', () => { // OK
+    expect(typeof myRestaurant.order).toBe('function');
+  });
 
-  // it('09 - Se ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos', () => {
-    
-  // });
+  it('09 - Se ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos', () => {
+    myRestaurant.order('sopa');
+    myRestaurant.order('picanha');
+    myRestaurant.order('agua');
+    expect(myRestaurant.consumption).toContain('coxinha');
+    expect(myRestaurant.consumption).toContain('sopa');
+    expect(myRestaurant.consumption).not.toContain('picanha');
+    expect(myRestaurant.consumption).toContain('agua');
+  });
   
   // it('10 - Se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`', () => {
     
