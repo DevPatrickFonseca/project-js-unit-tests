@@ -114,7 +114,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(typeof myRestaurant.order).toBe('function');
   });
 
-  it('09 - Se ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos', () => {
+  it('09 - Se ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos', () => { // OK
     myRestaurant.order('sopa');
     myRestaurant.order('picanha');
     myRestaurant.order('agua');
@@ -124,9 +124,10 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(myRestaurant.consumption).toContain('agua');
   });
   
-  // it('10 - Se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`', () => {
-    
-  // });
+  it('10 - Se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`', () => { // OK
+    myRestaurant.order('coxinha'); // Adicionei mais um pedido
+    expect(myRestaurant.consumption).toEqual(['coxinha', 'sopa', 'agua', 'coxinha']);
+  });
 
   // it('11 - Se ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, acrescido de 10%, conforme registrado em `objetoRetornado.consumption`', () => {
     
